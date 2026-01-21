@@ -42,16 +42,17 @@
         }
         
         /* Header & Navigation */
-        header {
-            padding: 25px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(18, 18, 18, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+       header {
+    padding: 18px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15, 15, 25, 0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
         
         nav {
             display: flex;
@@ -72,19 +73,15 @@
             gap: 30px;
         }
         
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
+       .nav-links a {
+    padding: 8px 14px;
+    border-radius: 25px;
+}
+
+.nav-links a:hover {
+    background: rgba(108,99,255,0.15);
+}
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -114,6 +111,18 @@
             flex: 1;
             max-width: 600px;
         }
+      .hero::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(108,99,255,0.25), transparent 70%);
+    top: -200px;
+    left: -200px;
+    filter: blur(80px);
+    z-index: -1;
+}
+
         
         .hero-image {
             flex: 1;
@@ -349,12 +358,33 @@
             background: linear-gradient(45deg, var(--primary), var(--accent));
         }
         
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        
+       .project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    background: rgba(255,255,255,0.1);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.5),
+        0 0 40px rgba(108,99,255,0.3);
+}
+.project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(120deg,#6C63FF,#36D1DC,#FF6584);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
         .coming-soon {
             position: absolute;
             top: 15px;
@@ -448,7 +478,16 @@
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.08);
         }
-        
+        .skill-item:hover {
+    background: linear-gradient(45deg,#6C63FF,#36D1DC);
+    color: white;
+    transform: scale(1.08);
+}
+
+.skill-item:hover i {
+    color: white;
+}
+
         .skill-category-title {
             font-size: 1.3rem;
             margin-bottom: 20px;
@@ -499,7 +538,10 @@
             position: relative;
             overflow: hidden;
         }
-        
+        .section-title {
+    text-shadow: 0 0 25px rgba(108,99,255,0.35);
+}
+
         .cta-section::before {
             content: '';
             position: absolute;
@@ -523,7 +565,23 @@
             margin: 0 auto 40px;
             line-height: 1.7;
         }
-        
+        .float-card::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 25px;
+    background: linear-gradient(45deg,#6C63FF,#36D1DC,#FF6584);
+    filter: blur(25px);
+    opacity: 0.6;
+    z-index: -1;
+    animation: glow 6s linear infinite;
+}
+
+@keyframes glow {
+    0% { filter: blur(20px) hue-rotate(0deg); }
+    100% { filter: blur(25px) hue-rotate(360deg); }
+}
+
         /* Footer */
         footer {
             text-align: center;
@@ -682,9 +740,301 @@
                 height: 250px;
             }
         }
+      #scroll-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg,#6C63FF,#36D1DC);
+    z-index: 2000;
+}
+      .menu-btn {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 260px;
+    height: 100vh;
+    background: rgba(15,15,30,0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 25px;
+    gap: 25px;
+    transition: 0.4s ease;
+    z-index: 999;
+}
+
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.mobile-nav a:hover {
+    color: var(--primary);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+/*<!--       loader -->*/
+      #loader {
+    position: fixed;
+    inset: 0;
+    background: #0f0f1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+.loader-circle {
+    width: 70px;
+    height: 70px;
+    border: 6px solid rgba(255,255,255,0.1);
+    border-top: 6px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*<!--dark/lightmode  -->*/
+      .theme-toggle {
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 20px;
+    color: white;
+}
+
+.light-mode {
+    --dark: #f8f9fa;
+    --light: #121212;
+    background: #ffffff;
+    color: #121212;
+}
+
+.light-mode header {
+    background: rgba(255,255,255,0.9);
+}
+/*<!--cursor        -->*/
+.cursor-glow {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(108,99,255,0.6);
+    filter: blur(15px);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+/*apple like toggle button glass*/
+.glass-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* switch body */
+.switch {
+    position: relative;
+    width: 55px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* glass background */
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.4s;
+    box-shadow:
+        inset 0 0 10px rgba(255,255,255,0.2),
+        0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* knob */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    top: 3px;
+    background: linear-gradient(145deg,#ffffff,#dcdcdc);
+    border-radius: 50%;
+    transition: 0.4s;
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3),
+        inset 0 0 4px rgba(255,255,255,0.6);
+}
+
+/* checked state */
+.switch input:checked + .slider {
+    background: rgba(108,99,255,0.4);
+    box-shadow:
+        0 0 15px rgba(108,99,255,0.8),
+        inset 0 0 15px rgba(255,255,255,0.3);
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(25px);
+}
+
+/* icons */
+.sun, .moon {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.switch input:checked ~ .moon {
+    opacity: 1;
+}
+
+.switch input:not(:checked) ~ .sun {
+    opacity: 1;
+}
+
+.menu-btn i {
+    transition: 0.3s;
+}
+
+.menu-btn.active i::before {
+    content: "\f00d";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+
+/* ============================
+   LIGHT MODE FIX
+============================ */
+
+.light-mode body {
+    background: #ffffff !important;
+    color: #121212 !important;
+}
+
+/* header */
+.light-mode header {
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* logo */
+.light-mode .logo {
+    background: linear-gradient(45deg, #6C63FF, #36D1DC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* nav links */
+.light-mode .nav-links a {
+    color: #121212;
+}
+
+.light-mode .nav-links a:hover {
+    background: rgba(108,99,255,0.15);
+}
+
+/* menu icon */
+.light-mode .menu-btn {
+    color: #121212;
+}
+
+/* mobile menu */
+.light-mode .mobile-nav {
+    background: rgba(255,255,255,0.97);
+}
+
+.light-mode .mobile-nav a {
+    color: #121212;
+}
+
+.light-mode .mobile-nav a:hover {
+    color: #6C63FF;
+}
+
+/* sections */
+.light-mode .section,
+.light-mode .cta-section {
+    background: #ffffff;
+}
+
+/* cards */
+.light-mode .project-card,
+.light-mode .skill-category {
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.light-mode .project-title,
+.light-mode .skill-category-title {
+    color: #121212;
+}
+
+.light-mode .project-description,
+.light-mode .description {
+    color: #444;
+}
+
+/* buttons */
+.light-mode .btn-outline {
+    color: #6C63FF;
+}
+
+/* footer */
+.light-mode footer {
+    color: #444;
+}
+
     </style>
 </head>
 <body>
+  <div id="scroll-bar"></div><div id="loader">
+    <div class="loader-circle"></div>
+    <h3>Loading Portfolio...</h3>
+</div>
+
+
+
     <div class="floating-elements">
         <div class="floating-element" style="width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s;"></div>
         <div class="floating-element" style="width: 60px; height: 60px; top: 20%; left: 80%; animation-delay: 2s;"></div>
@@ -696,14 +1046,48 @@
     
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">Portfolio</div>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
-                </div>
+           <nav>
+
+    <div class="logo">Portfolio</div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- glass toggle -->
+    <div class="glass-toggle">
+        <span class="sun">☀️</span>
+
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+
+        <span class="moon">🌙</span>
+    </div>
+
+    <!-- menu button -->
+    <div class="menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+</nav>
+
+<!-- mobile nav MUST be outside nav -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+</div>
+
+
+</div>
+
             </nav>
         </div>
     </header>
@@ -1031,7 +1415,42 @@ A passionate developer with experience in Flutter app development, UI/UX design,
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(type, 1000);
         });
-        
+      window.addEventListener("scroll", () => {
+    const scrolled =
+        (window.scrollY /
+        (document.body.scrollHeight - window.innerHeight)) * 100;
+
+    document.getElementById("scroll-bar").style.width = scrolled + "%";
+});
+window.addEventListener("load", () => {
+    document.getElementById("loader").style.display = "none";
+});
+
+        const menuBtn = document.getElementById("menuBtn");
+const mobileNav = document.getElementById("mobileNav");
+
+menuBtn.onclick = () => {
+    mobileNav.classList.toggle("active");
+   
+};
+menuBtn.onclick = () => {
+    mobileNav.classList.toggle("active");
+    menuBtn.classList.toggle("active");
+};
+
+
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.onclick = () => {
+        mobileNav.classList.remove("active");
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    };
+});document.addEventListener("mousemove", e => {
+    const glow = document.querySelector(".cursor-glow");
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+
+
         // Add scroll animation for elements
         const observerOptions = {
             threshold: 0.1,
@@ -1054,7 +1473,32 @@ A passionate developer with experience in Flutter app development, UI/UX design,
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
         });
-        
+        const themeToggle = document.getElementById("themeToggle");
+
+/* toggle theme */
+themeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("light-mode");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("light-mode")
+            ? "light"
+            : "dark"
+    );
+});
+
+/* restore saved theme */
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        themeToggle.checked = true;
+    }
+});
+
+
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1076,10 +1520,6 @@ A passionate developer with experience in Flutter app development, UI/UX design,
 </body>
 
 </html>
-
-
-
-
 
 
 
