@@ -1109,6 +1109,36 @@
         font-size: 1.8rem;
     }
 }
+/* ===============================
+   MOBILE OVERFLOW FIX
+================================ */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+header {
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.float-card,
+.float-card::after,
+.hero::before {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.menu-btn {
+    margin-left: 10px;
+}
 
 
     </style>
@@ -1606,6 +1636,7 @@ window.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
