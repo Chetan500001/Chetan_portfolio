@@ -1049,6 +1049,66 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
         }
+        /* ===============================
+   LIGHT MODE PREMIUM CARD STYLE
+   =============================== */
+
+body.light-mode .project-card,
+body.light-mode .skill-category,
+body.light-mode .cta-section {
+    background: linear-gradient(
+        135deg,
+        rgba(108, 99, 255, 0.12),
+        rgba(54, 209, 220, 0.12)
+    );
+    border: 1px solid rgba(108, 99, 255, 0.25);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(15px);
+}
+
+/* hover effect */
+body.light-mode .project-card:hover,
+body.light-mode .skill-category:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(108, 99, 255, 0.25);
+}
+
+/* text clarity in white mode */
+body.light-mode .project-title,
+body.light-mode .skill-category-title,
+body.light-mode .cta-title {
+    color: #1a1a1a;
+}
+
+body.light-mode .project-description,
+body.light-mode .description,
+body.light-mode .cta-description {
+    color: #4b5563;
+}
+
+/* mobile spacing fix */
+@media (max-width: 768px) {
+    .project-card,
+    .skill-category {
+        padding: 25px;
+    }
+
+    .cta-section {
+        padding: 60px 20px;
+        border-radius: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-title {
+        font-size: 1.9rem;
+    }
+
+    .section-title {
+        font-size: 2.1rem;
+    }
+}
+
     </style>
 </head>
 <body>
