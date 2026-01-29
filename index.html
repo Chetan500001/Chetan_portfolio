@@ -297,6 +297,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            gap: 80px;
         }
         
         .hero-content {
@@ -304,19 +305,20 @@
             position: relative;
             z-index: 2;
         }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradient 3s ease infinite;
-        }
+   .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+body:not(.light-mode) .hero h1 {
+    background: linear-gradient(45deg, #ffffff, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
         
         @keyframes gradient {
             0% { background-position: 0% 50%; }
@@ -333,12 +335,11 @@
             align-items: center;
         }
         
-        .typing-text span {
-            color: var(--primary);
-            border-right: 3px solid var(--primary);
-            padding-right: 10px;
-            animation: blink 0.7s infinite;
-        }
+     .typing-text span {
+    color: #6366f1;
+    font-weight: 700;
+}
+
         
         @keyframes blink {
             0%, 100% { border-color: transparent; }
@@ -414,52 +415,74 @@
         .hero-image {
             position: absolute;
             right: 0;
-            top: 50%;
+            top: 50%; width: 42%;
             transform: translateY(-50%);
-            width: 45%;
+            /*width: 45%;*/
             max-width: 500px;
         }
+        .hero-image::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(
+        circle,
+        rgba(108,99,255,0.35),
+        transparent 70%
+    );
+    filter: blur(70px);
+    z-index: -1;
+}
+
         
-        .float-card {
-            width: 100%;
-            height: 500px;
-            border-radius: 30px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                0 0 60px rgba(108, 99, 255, 0.4);
-            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
-            transition: transform 0.5s ease;
-        }
+ .float-card {
+    width: 100%;
+    height: 480px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+
+background: linear-gradient(
+    135deg,
+    rgba(108,99,255,0.18),
+    rgba(54,209,220,0.18)
+);
+
+
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.35),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+
+    transition: transform 0.4s ease;
+}
+
         
         .float-card:hover {
             transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) scale(1.05);
         }
         
-        .float-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(108, 99, 255, 0.1), transparent);
-            animation: shine 3s ease-in-out infinite;
-        }
+       
         
         @keyframes shine {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
         
-        .float-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .float-card:hover img {
-            transform: scale(1.05);
-        }
+   .float-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(1.1);
+}
+
+
+      .float-card:hover {
+    transform: translateY(-12px) scale(1.04);
+}
+
+
         
         /* Section Titles */
         .section {
@@ -909,6 +932,7 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 180px 0 80px;
+                
             }
             
             .hero-image {
@@ -1587,4 +1611,3 @@ body.light-mode .cta-description {
     </script>
 </body>
 </html>
-
