@@ -1445,10 +1445,10 @@ body.light-mode #welcome-screen {
     <!-- WELCOME SCREEN -->
 <div id="welcome-screen">
     <div class="welcome-content">
-        <h1>Welcome</h1>
-        <h2>I'm <span>Chetan</span></h2>
-        <p>Flutter Developer • Designer • Tech Enthusiast</p>
-    </div>
+    <h1>Welcome</h1>
+    <h2>I'm <span>Chetan</span></h2>
+    <p>Building Scalable Systems • API Testing • Problem Solver</p>
+</div>
 </div>
 
     <!-- Scroll Progress Bar -->
@@ -1478,6 +1478,7 @@ body.light-mode #welcome-screen {
             <div class="nav-links">
                 <a href="#home" class="active">Home</a>
                 <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
                 <a href="#certificates">Certificates</a>
                 <a href="#contact">Contact</a>
@@ -1508,6 +1509,9 @@ body.light-mode #welcome-screen {
         <a href="#projects">
             <i class="fas fa-code"></i> Projects
         </a>
+        <a href="#experience">
+    <i class="fas fa-briefcase"></i> Experience
+</a>
         <a href="#skills">
             <i class="fas fa-cogs"></i> Skills
         </a>
@@ -1528,8 +1532,9 @@ body.light-mode #welcome-screen {
                     <span id="typing"></span>
                 </div>
                 <p class="description">
-                    A passionate developer with experience in Flutter app development, UI/UX design, and data analytics using Python. I focus on building user-friendly and visually intuitive applications while extracting useful insights from data to support better decision making.
-                </p>
+                 
+A passionate developer with hands-on experience in API testing, backend systems, and production support. I work with tools like Postman, Bash, and cloud platforms to build reliable and scalable solutions. I enjoy solving real-world problems and continuously learning new technologies.
+</p>
                 
                 <div class="btn-group">
                     <a href="Chetan_resume.pdf" class="btn">
@@ -1604,7 +1609,36 @@ body.light-mode #welcome-screen {
             </div>
         </div>
     </section>
-    
+    <section class="section" id="experience">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+
+            <h3 class="project-title">
+                PASS Engineer Intern (Application Support) – Telenity
+            </h3>
+
+            <p id="experienceText" style="margin:10px 0; font-weight:500; color:#a5b4fc;"></p>
+
+            <p class="project-description">
+                Worked on API testing, production deployments, and backend support. 
+                Monitored services, analyzed logs, and ensured system stability in live environments.
+            </p>
+
+            <div class="project-tech">
+                <span class="tech-tag">Postman</span>
+                <span class="tech-tag">API Testing</span>
+                <span class="tech-tag">Bash</span>
+                <span class="tech-tag">SecureCRT</span>
+                <span class="tech-tag">Production Support</span>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Skills Section -->
     <section class="section" id="skills">
         <div class="container">
@@ -1755,13 +1789,13 @@ body.light-mode #welcome-screen {
     <script>
         // Typing Effect
         const typingText = document.getElementById('typing');
-        const texts = [
-            "Flutter Developer",
-            "Creative Designer",
-            "Digital Marketer",
-            "Problem Solver",
-            "Tech Enthusiast"
-        ];
+       const texts = [
+    "Application Support Engineer",
+    "API Testing",
+    "Flutter Developer",
+    "Problem Solver",
+    "Tech Explorer"
+];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -1940,6 +1974,43 @@ window.addEventListener("load", () => {
         welcome.style.display = "none";
     }
 });
+// ===============================
+// EXPERIENCE CALCULATOR (AUTO)
+// ===============================
+
+function calculateExperience() {
+    const startDate = new Date("2026-01-16");
+    const today = new Date();
+
+    let years = today.getFullYear() - startDate.getFullYear();
+    let months = today.getMonth() - startDate.getMonth();
+    let days = today.getDate() - startDate.getDate();
+
+    if (days < 0) {
+        months--;
+        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    let text = "Experience: ";
+
+    if (years > 0) text += years + " yr ";
+    if (months > 0) text += months + " mo ";
+    if (days >= 0) text += days + " days";
+
+    document.getElementById("experienceText").innerText = text;
+}
+
+// Run on load
+calculateExperience();
+
+// Update daily
+setInterval(calculateExperience, 86400000);
 
     </script>
 </body>
