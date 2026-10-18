@@ -1,3304 +1,401 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Chetan — QAD Engineer</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Chetan — QAD Engineer focused on API testing, VAS service validation, configuration and release support.">
+<title>Chetan | QAD Engineer</title>
 <style>
-
 :root{
-    --bg:#eef2f8;
-    --surface:#ffffff;
-    --surface2:#e8edf5;
-    --text:#18202b;
-    --muted:#657080;
-    --line:#d6dee8;
-
-    --accent:#5969dc;
-    --accent2:#7185ea;
-    --green:#4da88b;
-
-    --dark:#151b23;
-    --dark2:#202936;
-
-    --shadow:0 20px 55px rgba(25,40,60,.08);
-
-    --max:1160px;
+  --ink:#17212b; --muted:#627080; --paper:#f5f4ef; --white:#fff;
+  --navy:#102638; --navy2:#18364a; --blue:#3b78a4; --lime:#d7f36b;
+  --line:#d9dedf; --pale:#e8eef0; --max:1160px;
 }
-
-html[data-theme="dark"]{
-    --bg:#0d1218;
-    --surface:#151b24;
-    --surface2:#1c2531;
-    --text:#eef2f7;
-    --muted:#9ba7b6;
-    --line:#2c3846;
-
-    --accent:#8c99ff;
-    --accent2:#7387ee;
-    --green:#63c6aa;
-
-    --dark:#090e14;
-    --dark2:#171f29;
-
-    --shadow:0 25px 70px rgba(0,0,0,.25);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.top{position:sticky;top:0;z-index:50;background:rgba(245,244,239,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(23,33,43,.1)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{font-weight:800;font-size:1.08rem;letter-spacing:-.04em;text-decoration:none}
+.brand b{color:var(--blue)}
+.nav-right{display:flex;align-items:center;gap:28px}
+.navlinks{display:flex;gap:24px;align-items:center}
+.navlinks a{text-decoration:none;color:#536170;font-size:.88rem;font-weight:600}
+.navlinks a:hover{color:var(--blue)}
+.nav-cta{background:var(--navy);color:#fff!important;padding:10px 15px;border-radius:5px}
+.menu{display:none;border:1px solid var(--line);background:transparent;border-radius:5px;padding:8px 11px;font:inherit}
+.hero{position:relative;overflow:hidden;background:var(--navy);color:white;padding:78px 0 70px}
+.hero:before{content:"";position:absolute;width:540px;height:540px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-140px;top:-225px}
+.hero:after{content:"";position:absolute;width:370px;height:370px;border:1px solid rgba(215,243,107,.15);border-radius:50%;right:-55px;top:-140px}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);align-items:center;gap:75px}
+.availability{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:6px 11px;font-size:.76rem;color:#d9e3e9;letter-spacing:.01em}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(215,243,107,.13)}
+.eyebrow{margin:22px 0 12px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}
+h1{max-width:760px;margin:0;font-size:clamp(2.8rem,6.5vw,5.65rem);line-height:.99;letter-spacing:-.065em;font-weight:800}
+h1 span{color:var(--lime)}
+.hero-copy{max-width:650px;margin:23px 0 0;color:#c5d0d8;font-size:1.06rem;line-height:1.75}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:29px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 16px;border:1px solid rgba(255,255,255,.35);border-radius:5px;text-decoration:none;font-weight:700;font-size:.9rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.btn-ghost{color:white}
+.hero-footnote{margin-top:25px;color:#a8bac6;font-size:.81rem}
+.hero-footnote strong{color:#fff}
+.profile{position:relative;max-width:350px;justify-self:end;width:100%}
+.profile-frame{padding:9px;border:1px solid rgba(255,255,255,.23);background:rgba(255,255,255,.06);transform:rotate(1.5deg)}
+.profile img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;background:#dbe1e4}
+.profile-caption{position:absolute;left:-32px;bottom:22px;background:var(--lime);color:var(--navy);padding:13px 16px;box-shadow:0 12px 30px #07152155;transform:rotate(-2deg)}
+.profile-caption small{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.profile-caption strong{display:block;font-size:1rem}
+.proof-strip{background:#fff;border-bottom:1px solid var(--line)}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);padding:22px 0}
+.proof{padding:3px 26px;border-right:1px solid var(--line)}
+.proof:first-child{padding-left:0}
+.proof:last-child{border:0}
+.proof strong{display:block;font-size:1rem}
+.proof span{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+section.content{padding:82px 0;border-bottom:1px solid var(--line)}
+.section-top{display:grid;grid-template-columns:220px 1fr;gap:35px;margin-bottom:34px}
+.section-label{font-size:.77rem;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding-top:8px}
+h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.06;letter-spacing:-.05em;margin:0 0 13px}
+.section-intro{max-width:700px;margin:0;color:var(--muted);font-size:1rem}
+.experience-card{display:grid;grid-template-columns:275px 1fr;gap:48px;background:#fff;border:1px solid var(--line);padding:30px}
+.company-label{font-size:.77rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--blue)}
+.role-title{font-size:1.55rem;letter-spacing:-.035em;margin:7px 0 5px}
+.role-date{font-size:.88rem;color:var(--muted);margin:0}
+.role-status{display:inline-block;margin-top:17px;background:#edf3df;color:#405421;padding:5px 9px;border-radius:3px;font-size:.75rem;font-weight:700}
+.experience-copy p{margin:0;color:#46525d}
+.task-list{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.task-list li{position:relative;padding-left:27px}
+.task-list li:before{content:"✓";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--pale);color:var(--blue);font-size:.72rem;font-weight:800}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}
+.tags span{border:1px solid #d8e0e3;background:#f5f8f9;border-radius:4px;padding:5px 9px;font-size:.78rem;color:#405364}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.skill-card{background:#fff;border:1px solid var(--line);padding:24px}
+.skill-num{font-size:.73rem;color:var(--blue);font-weight:800;letter-spacing:.08em}
+.skill-card h3{font-size:1.2rem;letter-spacing:-.025em;margin:9px 0}
+.skill-card p{color:var(--muted);margin:0}
+.skill-card .tags{margin-top:16px}
+.project-list{border-top:1px solid var(--line)}
+.project{display:grid;grid-template-columns:54px minmax(190px,.8fr) 1.4fr 110px;gap:22px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line)}
+.project-index{font-size:.8rem;color:var(--blue);font-weight:800;padding-top:3px}
+.project h3{font-size:1.13rem;line-height:1.3;margin:0}
+.project p{margin:0;color:var(--muted);font-size:.93rem}
+.project-link{font-size:.85rem;font-weight:800;color:var(--blue);text-decoration:none;white-space:nowrap}
+.project-link:hover{text-decoration:underline;text-underline-offset:4px}
+.education{display:grid;grid-template-columns:180px 1fr;gap:25px;padding:22px 0;border-top:1px solid var(--line)}
+.education:last-child{border-bottom:1px solid var(--line)}
+.year{color:var(--muted);font-size:.9rem}
+.education h3{margin:0 0 5px;font-size:1.12rem}
+.education p{margin:0;color:var(--muted)}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cert{background:#fff;border:1px solid var(--line);padding:22px;min-height:155px}
+.cert-top{font-size:.74rem;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.cert h3{font-size:1.05rem;margin:14px 0 7px}
+.cert p{font-size:.9rem;color:var(--muted);margin:0}
+.contact-section{background:#e7edf0;padding:65px 0}
+.contact-box{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.contact-box h2{max-width:680px}
+.contact-box p{margin:0;color:var(--muted);max-width:640px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.contact-actions .btn{background:var(--navy);color:white;border-color:var(--navy)}
+.contact-actions .btn.secondary{background:transparent;color:var(--navy);border-color:#a9b8c1}
+footer{padding:22px 0;color:var(--muted);font-size:.83rem}
+.footer-row{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){
+ .hero-grid{gap:40px}.profile{max-width:300px}.experience-card{grid-template-columns:1fr;gap:22px}
+ .project{grid-template-columns:35px 1fr 1.4fr}.project-link{grid-column:2}
+ .nav-right{gap:15px}.navlinks{gap:15px}
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+@media(max-width:700px){
+ .wrap{width:calc(100% - 32px)}.nav{min-height:66px;flex-wrap:wrap;padding:12px 0}
+ .menu{display:block}.nav-right{display:none;width:100%;align-items:stretch}.nav-right.open{display:flex;flex-direction:column}
+ .navlinks{display:flex;flex-wrap:wrap;gap:13px 18px}.nav-cta{align-self:flex-start}
+ .hero{padding:54px 0 45px}.hero-grid{grid-template-columns:1fr;gap:38px}
+ .profile{justify-self:start;max-width:300px;margin-left:18px}.profile-caption{left:-18px}
+ .proof-grid{grid-template-columns:1fr;gap:0;padding:9px 0}
+ .proof,.proof:first-child{padding:13px 0;border-right:0;border-bottom:1px solid var(--line)}
+ .proof:last-child{border-bottom:0}
+ section.content{padding:55px 0}.section-top{grid-template-columns:1fr;gap:7px;margin-bottom:25px}
+ .skills-grid,.cert-grid{grid-template-columns:1fr}.project{grid-template-columns:30px 1fr;gap:8px 14px}
+ .project p,.project-link{grid-column:2}.education{grid-template-columns:1fr;gap:5px}
+ .contact-box{align-items:flex-start;flex-direction:column}.footer-row{flex-direction:column;gap:4px}
 }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 
-html{
-    scroll-behavior:smooth;
-    scroll-padding-top:90px;
+/* Premium welcome intro with a smooth typewriter sequence */
+.welcome-screen{
+  position:fixed;inset:0;z-index:9999;display:grid;place-items:center;
+  overflow:hidden;background:
+    radial-gradient(ellipse at 50% 42%,rgba(46,91,113,.42) 0%,rgba(16,38,56,0) 47%),
+    #0b1e2c;
+  color:#fff;text-align:center;opacity:1;visibility:visible;
+  transition:opacity .72s cubic-bezier(.22,.61,.36,1),visibility .72s ease;
+  touch-action:manipulation;cursor:pointer;isolation:isolate;
 }
-
-body{
-    font-family:"DM Sans",sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-    overflow-x:hidden;
-    transition:
-        background .5s ease,
-        color .3s ease;
+.welcome-screen.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-glow{
+  position:absolute;width:min(88vw,760px);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(255,255,255,.075);left:50%;top:47%;
+  transform:translate(-50%,-50%);box-shadow:0 0 100px rgba(68,133,157,.08),inset 0 0 100px rgba(68,133,157,.06);
+  animation:welcome-breathe 4s ease-in-out infinite;
 }
-
-/* Scroll background shades */
-
-body.tone1{
-    background:var(--bg);
+.welcome-glow:before,.welcome-glow:after{
+  content:"";position:absolute;inset:8%;border:1px solid rgba(215,243,107,.13);border-radius:50%;
 }
-
-body.tone2{
-    background:#edf3fb;
+.welcome-glow:after{inset:18%;border-color:rgba(255,255,255,.055)}
+.welcome-inner{position:relative;z-index:1;width:min(92vw,700px);padding:30px 20px}
+.welcome-kicker{
+  color:#a9bdc9;font-size:.68rem;letter-spacing:.27em;text-transform:uppercase;
+  font-weight:700;animation:welcome-rise .8s .12s both;
 }
-
-body.tone3{
-    background:#eff1fb;
-}
-
-body.tone4{
-    background:#edf4f2;
-}
-
-html[data-theme="dark"] body.tone1{
-    background:#0d1218;
-}
-
-html[data-theme="dark"] body.tone2{
-    background:#0e1519;
-}
-
-html[data-theme="dark"] body.tone3{
-    background:#121421;
-}
-
-html[data-theme="dark"] body.tone4{
-    background:#101719;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-button{
-    font:inherit;
-}
-
-.container{
-    width:min(var(--max),calc(100% - 40px));
-    margin:auto;
-}
-
-/* Scroll progress */
-
-#progress{
-    position:fixed;
-    top:0;
-    left:0;
-    width:0;
-    height:3px;
-    background:linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent2),
-        var(--green)
-    );
-    z-index:5000;
-}
-
-/* ===========================
-   WELCOME SCREEN
-=========================== */
-
-.welcome{
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(89,105,220,.18),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #090e15,
-            #101720
-        );
-    color:white;
-    z-index:6000;
-    overflow:hidden;
-}
-
-.welcome::before{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:50%;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(.25);
-    animation:orbit 2.5s ease forwards;
-}
-
-.welcome::after{
-    content:"";
-    position:absolute;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--green);
-    box-shadow:
-        0 0 40px 16px rgba(99,198,170,.15);
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    animation:welcomeDot 2.5s ease forwards;
-}
-
-.welcome-scene{
-    position:absolute;
-    inset:0;
-    display:grid;
-    place-items:center;
-    text-align:center;
-}
-
-.scene2{
-    opacity:0;
-    animation:helloScene 2.5s 2.5s forwards;
-}
-
-.scene1{
-    animation:namasteScene 2.5s forwards;
-}
-
-.welcome-content{
-    position:relative;
-    z-index:5;
-}
-
-.welcome-label{
-    text-transform:uppercase;
-    letter-spacing:.2em;
-    font-size:.62rem;
-    color:#8994a5;
-}
-
 .welcome-word{
-    margin-top:18px;
-    font-family:"Space Grotesk";
-    font-size:clamp(4rem,12vw,8rem);
-    line-height:.9;
-    letter-spacing:-.08em;
-
-    opacity:0;
-    transform:translateY(28px) scale(.96);
-
-    animation:welcomeText .9s .25s forwards;
+  display:flex;align-items:center;justify-content:center;min-height:1.15em;
+  margin:17px 0 16px;font-size:clamp(3.8rem,12vw,7.4rem);line-height:1.05;
+  font-weight:750;letter-spacing:-.075em;color:#fff;
+  text-shadow:0 8px 36px rgba(0,0,0,.16);
 }
-
-.scene1 .welcome-word{
-    color:#f3f5f7;
+.welcome-word span{color:#d7f36b}
+.typewriter-caret{
+  display:inline-block;width:3px;height:.78em;background:#d7f36b;margin-left:10px;
+  border-radius:3px;transform:translateY(.04em);animation:caret-blink .8s steps(2,start) infinite;
 }
-
-.scene2 .welcome-word{
-    animation-delay:2.8s;
-    background:
-        linear-gradient(
-            100deg,
-            #fff,
-            #96a2ff,
-            #69c5af
-        );
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
 .welcome-sub{
-    margin-top:18px;
-    font-size:.75rem;
-    color:#929dab;
-    opacity:0;
-    animation:welcomeText .7s .75s forwards;
+  margin-top:8px;color:#d6e0e6;font-size:clamp(1rem,2.8vw,1.2rem);
+  letter-spacing:.015em;opacity:1;transform:none;
 }
-
-.scene2 .welcome-sub{
-    animation-delay:3.25s;
+.welcome-sub strong{font-weight:700;color:#fff}
+.welcome-role{
+  margin-top:7px;color:#a9bdc9;font-size:.77rem;letter-spacing:.17em;text-transform:uppercase;
+  opacity:1;transform:none;
 }
-
-.welcome-progress{
-    position:absolute;
-    left:12%;
-    right:12%;
-    bottom:35px;
-    height:1px;
-    background:rgba(255,255,255,.1);
-    z-index:10;
-}
-
+.welcome-progress{position:absolute;bottom:0;left:0;height:2px;width:100%;background:rgba(255,255,255,.08)}
 .welcome-progress span{
-    display:block;
-    height:100%;
-    width:0;
-    background:linear-gradient(
-        90deg,
-        var(--accent2),
-        var(--green)
-    );
-    animation:progress5 4.6s linear forwards;
-}
-
-.welcome.hide{
-    animation:welcomeExit .7s forwards;
-    pointer-events:none;
-}
-
-@keyframes welcomeText{
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
-
-@keyframes namasteScene{
-    0%{opacity:1}
-    82%{opacity:1}
-    100%{opacity:0}
-}
-
-@keyframes helloScene{
-    0%{opacity:0}
-    10%{opacity:1}
-    100%{opacity:1}
-}
-
-@keyframes orbit{
-    0%{
-        opacity:0;
-        transform:translate(-50%,-50%) scale(.25) rotate(0);
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-        transform:translate(-50%,-50%) scale(1.05) rotate(140deg);
-    }
-}
-
-@keyframes welcomeDot{
-    0%{
-        transform:translate(-50%,-50%) scale(.2);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translate(-50%,-50%) scale(9);
-        opacity:0;
-    }
-}
-
-@keyframes progress5{
-    to{
-        width:100%;
-    }
-}
-
-@keyframes welcomeExit{
-    to{
-        opacity:0;
-        transform:scale(1.03);
-        visibility:hidden;
-    }
-}
-
-/* ===========================
-   HEADER
-=========================== */
-
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:70px;
-    z-index:2000;
-
-    background:rgba(238,242,248,.83);
-    backdrop-filter:blur(16px);
-
-    border-bottom:1px solid rgba(40,50,60,.08);
-
-    transition:.3s;
-}
-
-html[data-theme="dark"] header{
-    background:rgba(13,18,24,.88);
-    border-bottom-color:rgba(255,255,255,.07);
-}
-
-header.scrolled{
-    box-shadow:0 8px 28px rgba(0,0,0,.06);
-}
-
-.nav{
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-family:"Space Grotesk";
-    font-size:1.05rem;
-    font-weight:700;
-    letter-spacing:-.04em;
-}
-
-.logo span{
-    color:var(--accent);
-}
-
-.navlinks{
-    display:flex;
-    gap:4px;
-}
-
-.navlinks a{
-    padding:8px 10px;
-    border-radius:8px;
-    color:var(--muted);
-    font-size:.76rem;
-    transition:.2s;
-}
-
-.navlinks a:hover,
-.navlinks a.active{
-    background:var(--surface2);
-    color:var(--text);
-}
-
-.navtools{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.theme-toggle,
-.menu{
-    width:37px;
-    height:37px;
-    border-radius:9px;
-    border:1px solid var(--line);
-    background:var(--surface);
-    color:var(--text);
-
-    display:grid;
-    place-items:center;
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.theme-toggle:hover,
-.menu:hover{
-    transform:translateY(-1px);
-    background:var(--surface2);
-}
-
-.resume{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-
-    padding:8px 12px;
-
-    border:1px solid var(--line);
-    border-radius:8px;
-
-    background:var(--surface);
-
-    font-size:.73rem;
-    font-weight:700;
-}
-
-.menu{
-    display:none;
-}
-
-/* ===========================
-   HERO
-=========================== */
-
-.hero{
-    min-height:100vh;
-    padding:125px 0 85px;
-    display:flex;
-    align-items:center;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.06fr .94fr;
-    gap:64px;
-    align-items:center;
-}
-
-.kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    color:var(--accent);
-
-    font-size:.64rem;
-    font-weight:800;
-
-    text-transform:uppercase;
-    letter-spacing:.14em;
-}
-
-.kicker::before{
-    content:"";
-    width:25px;
-    height:1px;
-    background:var(--accent);
-}
-
-.hero h1{
-    margin-top:18px;
-
-    font-family:"Space Grotesk";
-
-    font-size:
-        clamp(
-            3.5rem,
-            7.5vw,
-            6.2rem
-        );
-
-    line-height:.91;
-
-    letter-spacing:-.075em;
-}
-
-.hero h1 em{
-    font-style:normal;
-    color:var(--accent);
-}
-
-.hero-text{
-    max-width:650px;
-    color:var(--muted);
-    font-size:.96rem;
-    margin:25px 0 28px;
-}
-
-.actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:11px 14px;
-
-    border-radius:9px;
-    border:1px solid var(--line);
-
-    font-size:.77rem;
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-}
-
-.btn-primary{
-    background:var(--text);
-    color:var(--bg);
-    border-color:var(--text);
-}
-
-.hero-stats{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:7px;
-
-    max-width:620px;
-
-    margin-top:32px;
-}
-
-.hero-stat{
-    padding-top:13px;
-    border-top:1px solid var(--line);
-}
-
-.hero-stat strong{
-    display:block;
-    font-size:.77rem;
-}
-
-.hero-stat span{
-    color:var(--muted);
-    font-size:.63rem;
-}
-
-/* Photo */
-
-.photo-wrap{
-    max-width:470px;
-    margin-left:auto;
-}
-
-.photo-card{
-    position:relative;
-    padding:9px;
-
-    background:var(--surface2);
-
-    border:1px solid var(--line);
-    border-radius:22px;
-
-    box-shadow:var(--shadow);
-}
-
-.photo-card img{
-    display:block;
-    width:100%;
-
-    aspect-ratio:4 / 5;
-
-    object-fit:cover;
-    object-position:center top;
-
-    border-radius:15px;
-
-    filter:saturate(.88);
-}
-
-.photo-card::before{
-    content:"";
-
-    position:absolute;
-    left:-11px;
-    top:35px;
-
-    width:7px;
-    height:60px;
-
-    background:var(--accent);
-    border-radius:5px;
-}
-
-.photo-caption{
-    position:absolute;
-    left:-14px;
-    bottom:22px;
-
-    padding:11px 13px;
-
-    background:var(--dark);
-    color:white;
-
-    border-radius:10px;
-
-    box-shadow:
-        0 13px 30px rgba(0,0,0,.18);
-}
-
-.photo-caption small{
-    display:block;
-
-    color:#9ca6b1;
-
-    font-size:.55rem;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-}
-
-.photo-caption strong{
-    display:block;
-
-    font-family:"Space Grotesk";
-    font-size:.8rem;
-
-    margin-top:2px;
-}
-
-.photo-mark{
-    position:absolute;
-
-    right:13px;
-    top:13px;
-
-    padding:7px 9px;
-
-    color:white;
-    background:rgba(10,14,18,.72);
-
-    border-radius:999px;
-
-    font-size:.58rem;
-    font-weight:700;
-}
-
-/* ===========================
-   SECTION
-=========================== */
-
-section{
-    padding:92px 0;
-}
-
-.section-head{
-    display:grid;
-    grid-template-columns:190px 1fr;
-    gap:40px;
-
-    align-items:start;
-
-    margin-bottom:32px;
-}
-
-.section-number{
-    padding-top:4px;
-
-    font-family:"Space Grotesk";
-
-    color:var(--accent);
-
-    font-size:.66rem;
-    font-weight:700;
-
-    letter-spacing:.12em;
-}
-
-.section-head h2{
-    font-family:"Space Grotesk";
-
-    font-size:
-        clamp(
-            2.2rem,
-            4.5vw,
-            3.6rem
-        );
-
-    line-height:.98;
-
-    letter-spacing:-.055em;
-}
-
-.section-head p{
-    max-width:720px;
-
-    margin-top:11px;
-
-    color:var(--muted);
-
-    font-size:.85rem;
-}
-
-/* ===========================
-   EXPERIENCE
-=========================== */
-
-.experience{
-    display:grid;
-    grid-template-columns:255px 1fr;
-
-    gap:32px;
-
-    padding:29px;
-
-    border:
-        1px solid var(--line);
-
-    border-radius:19px;
-
-    background:
-        color-mix(
-            in srgb,
-            var(--surface) 88%,
-            transparent
-        );
-
-    box-shadow:var(--shadow);
-}
-
-.company{
-    color:var(--accent);
-
-    font-size:.63rem;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-    font-weight:800;
-}
-
-.experience h3{
-    margin:
-        6px 0 3px;
-
-    font-family:"Space Grotesk";
-
-    font-size:1.45rem;
-}
-
-.period{
-    color:var(--muted);
-
-    font-size:.72rem;
-}
-
-.exp-copy{
-    color:var(--muted);
-
-    font-size:.83rem;
-}
-
-.exp-list{
-    display:grid;
-
-    gap:8px;
-
-    margin-top:15px;
-}
-
-.exp-list li{
-    list-style:none;
-
-    position:relative;
-
-    padding-left:17px;
-
-    color:var(--text);
-
-    font-size:.8rem;
-}
-
-.exp-list li::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    top:.7em;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:var(--accent);
-}
-
-.work-tags{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    margin-top:17px;
-}
-
-.tag{
-    padding:5px 7px;
-
-    border:
-        1px solid var(--line);
-
-    border-radius:6px;
-
-    background:var(--surface2);
-
-    color:var(--muted);
-
-    font-size:.61rem;
-}
-
-/* Timer */
-
-.timer{
-    margin-top:18px;
-
-    padding:17px;
-
-    background:var(--dark);
-
-    color:white;
-
-    border-radius:13px;
-}
-
-.timer-label{
-    color:#8f99a5;
-
-    font-size:.57rem;
-
-    letter-spacing:.13em;
-
-    text-transform:uppercase;
-
-    font-weight:800;
-}
-
-.timer-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:6px;
-
-    margin-top:10px;
-}
-
-.timer-item{
-    padding:9px 3px;
-
-    text-align:center;
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius:8px;
-
-    background:rgba(255,255,255,.025);
-}
-
-.timer-item strong{
-    display:block;
-
-    font:
-        600 1.08rem
-        "Space Grotesk";
-}
-
-.timer-item span{
-    color:#8d97a2;
-
-    font-size:.53rem;
-
-    text-transform:uppercase;
-}
-
-.journey{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:8px;
-
-    margin-top:10px;
-}
-
-.journey div{
-    padding-top:9px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-.journey b{
-    display:block;
-
-    font-size:.63rem;
-}
-
-.journey span{
-    color:#8d97a2;
-
-    font-size:.55rem;
-}
-
-/* ===========================
-   SKILLS
-=========================== */
-
-.skills-layout{
-    display:grid;
-
-    grid-template-columns:
-        1.1fr .9fr;
-
-    gap:15px;
-}
-
-.skill-board{
-    padding:26px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:19px;
-
-    background:var(--surface);
-}
-
-.skill-board.professional{
-    background:var(--dark);
-
-    color:white;
-
-    border-color:var(--dark);
-}
-
-.board-head{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:18px;
-
-    padding-bottom:17px;
-
-    border-bottom:
-        1px solid
-        var(--line);
-}
-
-.professional .board-head{
-    border-color:
-        rgba(255,255,255,.08);
-}
-
-.board-head small{
-    display:block;
-
-    color:var(--muted-2);
-
-    font-size:.57rem;
-
-    letter-spacing:.13em;
-
-    text-transform:uppercase;
-
-    font-weight:800;
-}
-
-.professional .board-head small{
-    color:#86918c;
-}
-
-.board-head h3{
-    margin-top:4px;
-
-    font:
-        600 1.32rem
-        "Space Grotesk";
-}
-
-.board-icon{
-    width:31px;
-    height:31px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:8px;
-
-    background:var(--surface2);
-
-    color:var(--accent);
-
-    font-size:.7rem;
-}
-
-.professional .board-icon{
-    background:#222a28;
-
-    color:#6bc7a7;
-}
-
-.skill-group{
-    padding-top:15px;
-}
-
-.skill-group + .skill-group{
-    margin-top:13px;
-
-    border-top:
-        1px solid
-        var(--line);
-}
-
-.professional .skill-group + .skill-group{
-    border-color:
-        rgba(255,255,255,.08);
-}
-
-.skill-group h4{
-    margin-bottom:9px;
-
-    font:
-        600 .75rem
-        "Space Grotesk";
-}
-
-.pills{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-}
-
-.pill{
-    padding:7px 8px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:7px;
-
-    background:var(--surface2);
-
-    color:var(--muted);
-
-    font-size:.63rem;
-}
-
-.professional .pill{
-    background:#1d2623;
-
-    border-color:#2c3733;
-
-    color:#d1d9d5;
-}
-
-.pill i{
-    margin-right:4px;
-
-    color:var(--accent);
-
-    font-size:.57rem;
-}
-
-.professional .pill i{
-    color:#6dc9aa;
-}
-
-.ind-note{
-    margin-top:16px;
-
-    padding:13px;
-
-    border:
-        1px dashed
-        var(--line);
-
-    border-radius:10px;
-
-    background:var(--surface2);
-
-    color:var(--muted);
-
-    font-size:.71rem;
-
-    line-height:1.55;
-}
-
-.ind-note strong{
-    color:var(--text);
-}
-
-.personal-groups{
-    display:grid;
-
-    gap:10px;
-
-    margin-top:14px;
-}
-
-.personal-group{
-    padding:13px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:11px;
-
-    background:var(--surface);
-}
-
-.personal-group h4{
-    margin-bottom:8px;
-
-    font:
-        600 .76rem
-        "Space Grotesk";
-}
-
-/* ===========================
-   PROJECTS / CERTIFICATES
-=========================== */
-
-.card-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:13px;
-}
-
-.card{
-    padding:21px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:15px;
-
-    background:var(--surface);
-
-    transition:.22s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow);
-}
-
-.card-icon{
-    width:38px;
-    height:38px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:9px;
-
-    background:var(--surface2);
-
-    color:var(--accent);
-
-    margin-bottom:14px;
-
-    font-size:.77rem;
-}
-
-.card h3{
-    margin-bottom:6px;
-
-    font:
-        600 1rem
-        "Space Grotesk";
-}
-
-.card p{
-    color:var(--muted);
-
-    font-size:.72rem;
-}
-
-.card-tags{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:5px;
-
-    margin-top:12px;
-}
-
-.card-tags span{
-    padding:4px 6px;
-
-    border-radius:5px;
-
-    background:var(--surface2);
-
-    color:var(--muted);
-
-    font-size:.57rem;
-}
-
-/* ===========================
-   EDUCATION
-=========================== */
-
-.education-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:13px;
-}
-
-.education-card{
-    padding:23px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:16px;
-
-    background:var(--surface);
-
-    transition:.22s;
-}
-
-.education-card:hover{
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow);
-}
-
-.education-top{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:17px;
-}
-
-.education-year{
-    color:var(--muted);
-
-    font-size:.61rem;
-
-    font-weight:800;
-
-    letter-spacing:.08em;
-}
-
-.education-mark{
-    padding:5px 8px;
-
-    border-radius:6px;
-
-    background:var(--surface2);
-
-    color:var(--accent);
-
-    font-size:.61rem;
-
-    font-weight:800;
-}
-
-.education-icon{
-    width:40px;
-    height:40px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:10px;
-
-    background:var(--surface2);
-
-    color:var(--accent);
-
-    margin-bottom:13px;
-}
-
-.education-card h3{
-    font:
-        600 1rem
-        "Space Grotesk";
-
-    margin-bottom:5px;
-}
-
-.education-card p{
-    color:var(--muted);
-
-    font-size:.74rem;
-}
-
-/* ===========================
-   CONTACT
-=========================== */
-
-.contact{
-    display:grid;
-
-    grid-template-columns:
-        1fr auto;
-
-    gap:30px;
-
-    align-items:end;
-
-    padding:42px 32px;
-
-    border-radius:21px;
-
-    background:var(--dark);
-
-    color:white;
-}
-
-.contact h2{
-    max-width:750px;
-
-    font:
-        600 clamp(
-            2.2rem,
-            4.5vw,
-            3.5rem
-        )/.98
-        "Space Grotesk";
-
-    letter-spacing:-.06em;
-}
-
-.contact p{
-    max-width:650px;
-
-    margin-top:11px;
-
-    color:#9aa5b0;
-
-    font-size:.8rem;
-}
-
-.contact .kicker{
-    color:#6bc7a6;
-    margin-bottom:10px;
-}
-
-.contact .kicker::before{
-    background:#6bc7a6;
-}
-
-.contact-actions{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:7px;
-
-    justify-content:flex-end;
-}
-
-.contact-actions .btn{
-    background:#1d2523;
-    border-color:#303936;
-
-    color:white;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-
-footer{
-    padding:
-        30px
-        0
-        42px;
-
-    text-align:center;
-
-    color:var(--muted-2);
-
-    font-size:.64rem;
-}
-
-/* ===========================
-   SCROLL REVEAL
-=========================== */
-
-.reveal{
-    opacity:0;
-
-    transform:translateY(14px);
-
-    transition:
-        opacity .55s ease,
-        transform .55s ease;
-}
-
-.reveal.show{
-    opacity:1;
-
-    transform:none;
-}
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width:980px){
-
-    .navlinks{
-        display:none;
-    }
-
-    .resume{
-        display:none;
-    }
-
-    .menu{
-        display:grid;
-    }
-
-    .nav.mobile-open .navlinks{
-        position:absolute;
-
-        display:flex;
-
-        flex-direction:column;
-
-        top:62px;
-        left:12px;
-        right:12px;
-
-        padding:7px;
-
-        background:var(--surface);
-
-        border:
-            1px solid
-            var(--line);
-
-        border-radius:12px;
-
-        box-shadow:
-            0 18px 35px
-            rgba(0,0,0,.10);
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-        gap:42px;
-    }
-
-    .photo-wrap{
-        margin:auto;
-    }
-
-    .experience{
-        grid-template-columns:1fr;
-    }
-
-    .skills-layout{
-        grid-template-columns:1fr;
-    }
-
-    .contact{
-        grid-template-columns:1fr;
-    }
-
-    .contact-actions{
-        justify-content:flex-start;
-    }
-}
-
-@media(max-width:680px){
-
-    .container{
-        width:
-            calc(100% - 24px);
-    }
-
-    section{
-        padding:72px 0;
-    }
-
-    .hero{
-        padding:
-            110px
-            0
-            65px;
-        min-height:auto;
-    }
-
-    .hero h1{
-        font-size:
-            clamp(
-                3rem,
-                14vw,
-                4.2rem
-            );
-    }
-
-    .hero-text{
-        font-size:.88rem;
-    }
-
-    .hero-stats{
-        grid-template-columns:
-            repeat(3,1fr);
-
-        gap:5px;
-    }
-
-    .hero-stat{
-        padding:
-            11px 7px;
-    }
-
-    .hero-stat span{
-        font-size:.57rem;
-    }
-
-    .photo-card{
-        padding:6px;
-        border-radius:18px;
-    }
-
-    .photo-card img{
-        aspect-ratio:
-            4 / 4.7;
-
-        border-radius:13px;
-    }
-
-    .photo-caption{
-        left:9px;
-        bottom:11px;
-    }
-
-    .photo-mark{
-        right:9px;
-        top:9px;
-    }
-
-    .section-head{
-        grid-template-columns:1fr;
-        gap:8px;
-        margin-bottom:24px;
-    }
-
-    .section-head h2{
-        font-size:2.35rem;
-    }
-
-    .experience,
-    .skill-board{
-        padding:20px;
-        border-radius:17px;
-    }
-
-    .card-grid,
-    .education-grid{
-        grid-template-columns:1fr;
-    }
-
-    .contact{
-        padding:29px 21px;
-    }
-
-    .welcome-progress{
-        left:15px;
-        right:15px;
-        bottom:25px;
-    }
-}
-
+  display:block;height:100%;width:0;background:#d7f36b;
+  box-shadow:0 0 12px rgba(215,243,107,.45);animation:welcome-progress 5s linear forwards;
+}
+@keyframes welcome-breathe{0%,100%{transform:translate(-50%,-50%) scale(.97);opacity:.75}50%{transform:translate(-50%,-50%) scale(1.025);opacity:1}}
+@keyframes welcome-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes caret-blink{to{opacity:0}}
+@keyframes welcome-progress{to{width:100%}}
+body.welcome-active{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation:none!important;
-        transition:none!important;
-        scroll-behavior:auto!important;
-    }
-
-    .welcome{
-        display:none;
-    }
+  .welcome-screen,.welcome-glow,.welcome-mark,.welcome-kicker,.typewriter-caret,.welcome-progress span{animation:none!important}
+  .welcome-screen{transition:none!important}
 }
-
 </style>
 </head>
+<body class="welcome-active">
 
-<body class="tone1">
-
-<div id="progress"></div>
-
-<!-- ===========================
-     WELCOME
-=========================== -->
-
-<div class="welcome" id="welcome">
-
-    <div class="welcome-scene scene1">
-
-        <div class="welcome-content">
-
-            <div class="welcome-label">
-                Welcome
-            </div>
-
-            <div class="welcome-word">
-                Namaste
-            </div>
-
-            <div class="welcome-sub">
-                Nice to have you here.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="welcome-scene scene2">
-
-        <div class="welcome-content">
-
-            <div class="welcome-label">
-                
-            </div>
-
-            <div class="welcome-word">
-                Hello
-            </div>
-
-            <div class="welcome-sub">
-                I'm Chetan · QAD Engineer
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="welcome-progress">
-        <span></span>
-    </div>
-
+<div class="welcome-screen" id="welcomeScreen" role="button" tabindex="0" aria-label="Welcome to Chetan's portfolio">
+  <div class="welcome-glow" aria-hidden="true"></div>
+  <div class="welcome-inner">
+    <div class="welcome-word" aria-live="polite"><span id="welcomeWord">नमस्ते</span><i class="typewriter-caret" id="welcomeCaret" aria-hidden="true"></i></div>
+    <div class="welcome-sub" id="welcomeSub">I'm <strong>Chetan</strong></div>
+    <div class="welcome-role" id="welcomeRole">QAD Engineer · Telenity</div>
+  </div>
+  <div class="welcome-progress" aria-hidden="true"><span></span></div>
 </div>
 
-<!-- ===========================
-     HEADER
-=========================== -->
-
-<header id="siteHeader">
-
-<div class="container nav" id="nav">
-
-    <a class="logo" href="#home">
-        Chetan<span>.</span>QAD
-    </a>
-
-
-    <nav class="navlinks">
-
-        <a class="active" href="#home">
-            Home
-        </a>
-
-        <a href="#experience">
-            Experience
-        </a>
-
-        <a href="#skills">
-            Skills
-        </a>
-
-        <a href="#projects">
-            Projects
-        </a>
-
-        <a href="#education">
-            Education
-        </a>
-
-        <a href="#certificates">
-            Certificates
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-    </nav>
-
-
-    <div class="navtools">
-
-        <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Switch theme"
-            title="Switch theme">
-
-            <i class="fa-solid fa-moon"></i>
-
-        </button>
-
-
-        <a
-            class="resume"
-            href="Chetan_resume.pdf">
-
-            <i class="fa-regular fa-file-lines"></i>
-            Resume
-
-        </a>
-
-
-        <button
-            class="menu"
-            id="menu"
-            aria-label="Open menu">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#home">Chetan<b>.</b></a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navRight">Menu ☰</button>
+    <div class="nav-right" id="navRight">
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a>
+      </nav>
+      <a class="nav-cta" href="#contact" style="text-decoration:none;font-size:.88rem;font-weight:700;padding:10px 14px;border-radius:5px">Contact me ↗</a>
     </div>
-
-</div>
-
+  </div>
 </header>
 
-
 <main>
-
-<!-- ===========================
-     HERO
-=========================== -->
-
-<section
-    class="hero"
-    id="home">
-
-<div class="container hero-grid">
-
-
-<div class="reveal">
-
-    <div class="kicker">
-        QAD Engineer · Telenity
-    </div>
-
-
-    <h1>
-        I help make sure
-        every release is
-        <em>ready.</em>
-    </h1>
-
-
-    <p class="hero-text">
-
-        At Telenity, I work on VAS services across testing,
-        validation, configuration, deployment and production support.
-        A big part of my work is checking the details, finding issues,
-        and making sure a service behaves as expected before and after release.
-
-    </p>
-
-
-    <div class="actions">
-
-        <a
-            class="btn btn-primary"
-            href="#experience">
-
-            <i class="fa-solid fa-arrow-down"></i>
-
-            My experience
-
-        </a>
-
-
-        <a
-            class="btn"
-            href="Chetan_resume.pdf">
-
-            <i class="fa-regular fa-file-lines"></i>
-
-            Resume
-
-        </a>
-
-    </div>
-
-
-    <div class="hero-stats">
-
-        <div class="hero-stat">
-
-            <strong>VAS Services</strong>
-
-            <span>
-                Testing & delivery
-            </span>
-
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="availability"><span class="dot"></span> QAD Engineer at Telenity</div>
+        <p class="eyebrow">Quality · APIs · Service delivery</p>
+        <h1>I make sure the details work.<br><span>Not just the demo.</span></h1>
+        <p class="hero-copy">I work across VAS service testing, API validation, configuration and release support at Telenity. I like tracing issues to their source, checking real service flows and making sure changes behave as expected.</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#experience">Explore my experience <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost" href="Chetan_resume.pdf">View résumé ↗</a>
         </div>
+        <p class="hero-footnote"><strong>QAD Engineer</strong> · Previously QAD Engineer Intern · MCA, Thapar University</p>
+      </div>
+      <figure class="profile">
+        <div class="profile-frame"><img src="Chetan.jpg" alt="Portrait of Chetan"></div>
+        <figcaption class="profile-caption"><small>Currently working at</small><strong>Telenity · QAD</strong></figcaption>
+      </figure>
+    </div>
+  </section>
 
+  <div class="proof-strip">
+    <div class="wrap proof-grid">
+      <div class="proof"><strong>API testing & validation</strong><span>Check requests, responses and service flows</span></div>
+      <div class="proof"><strong>Service configuration</strong><span>Prepare VAS services and campaigns</span></div>
+      <div class="proof"><strong>Release & log support</strong><span>Investigate behaviour before and after go-live</span></div>
+    </div>
+  </div>
 
-        <div class="hero-stat">
-
-            <strong>API Testing</strong>
-
-            <span>
-                Checks & validation
-            </span>
-
+  <section class="content" id="experience">
+    <div class="wrap">
+      <div class="section-top"><div class="section-label">01 / Experience</div><div><h2>Work that happens behind a reliable service.</h2><p class="section-intro">I joined Telenity as an intern in January 2026 and moved into a permanent QAD Engineer role in July 2026.</p></div></div>
+      <article class="experience-card">
+        <div>
+          <div class="company-label">Telenity</div><h3 class="role-title">QAD Engineer</h3>
+          <p class="role-date">Permanent role · 15 July 2026</p><p class="role-date">Internship · 15 January–July 2026</p>
+          <span class="role-status">Internship → Full-time role</span>
         </div>
-
-
-        <div class="hero-stat">
-
-            <strong>Production</strong>
-
-            <span>
-                Support & releases
-            </span>
-
+        <div class="experience-copy">
+          <p>My role involves checking that services are configured correctly, testing how they behave, and helping investigate problems when the result is different from what we expect.</p>
+          <ul class="task-list">
+            <li>Test APIs and validate service flows with Postman.</li>
+            <li>Work on service definitions, configuration and campaign setup.</li>
+            <li>Support deployments and verify changes after services go live.</li>
+            <li>Trace service behaviour through SecureCRT logs and investigate issues.</li>
+            <li>Use remote access tools when troubleshooting requires it.</li>
+          </ul>
+          <div class="tags"><span>Postman</span><span>SecureCRT</span><span>TeamViewer</span><span>API testing</span><span>Log analysis</span><span>Service validation</span><span>VAS</span></div>
         </div>
-
+      </article>
     </div>
+  </section>
 
-</div>
-
-
-<!-- PHOTO -->
-
-<div class="photo-wrap reveal">
-
-    <div class="photo-card">
-
-        <img
-            src="Chetan.jpg"
-            alt="Chetan QAD Engineer">
-
-
-        <div class="photo-caption">
-
-            <small>
-                Current role
-            </small>
-
-            <strong>
-                QAD Engineer · Telenity
-            </strong>
-
-        </div>
-
-
-        <div class="photo-mark">
-            QA · VAS · 2026
-        </div>
-
+  <section class="content" id="skills">
+    <div class="wrap">
+      <div class="section-top"><div class="section-label">02 / Skills</div><div><h2>The tools I use, and the ones I’m building with.</h2><p class="section-intro">A clear split between my work-focused skills and technologies I’ve practised through projects.</p></div></div>
+      <div class="skills-grid">
+        <article class="skill-card"><span class="skill-num">01 — QUALITY & TESTING</span><h3>API and service validation</h3><p>Postman, API testing, functional checks, service-flow validation and issue investigation.</p><div class="tags"><span>Postman</span><span>Functional testing</span><span>Validation</span></div></article>
+        <article class="skill-card"><span class="skill-num">02 — RELEASE & SUPPORT</span><h3>Configuration and troubleshooting</h3><p>Service definitions, VAS setup, deployment checks, SecureCRT logs and remote support.</p><div class="tags"><span>SecureCRT</span><span>TeamViewer</span><span>Log analysis</span></div></article>
+        <article class="skill-card"><span class="skill-num">03 — DEVELOPMENT</span><h3>Web and programming</h3><p>JavaScript, HTML, CSS, SQL, PostgreSQL, Git, Bash and Flutter.</p><div class="tags"><span>JavaScript</span><span>SQL</span><span>Git</span><span>Flutter</span></div></article>
+        <article class="skill-card"><span class="skill-num">04 — OTHER TOOLS</span><h3>Cloud and design exposure</h3><p>Firebase, Canva, UI/UX and graphic design, developed through learning and personal practice.</p><div class="tags"><span>Firebase</span><span>Canva</span><span>UI/UX</span></div></article>
+      </div>
     </div>
+  </section>
 
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     EXPERIENCE
-=========================== -->
-
-<section id="experience">
-
-<div class="container">
-
-
-<div class="section-head reveal">
-
-    <div class="section-number">
-        01 · EXPERIENCE
+  <section class="content" id="projects">
+    <div class="wrap">
+      <div class="section-top"><div class="section-label">03 / Projects</div><div><h2>Things I’ve built outside work.</h2><p class="section-intro">Small, concrete projects that show how I apply what I learn.</p></div></div>
+      <div class="project-list">
+        <article class="project"><div class="project-index">01</div><h3>Temporary Billing System</h3><p>A billing project for invoicing, payment tracking and reporting, built with HTML, CSS, JavaScript and PHP.</p><a class="project-link" href="https://github.com/Chetan500001/temporary_billing_system/tree/main" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></article>
+        <article class="project"><div class="project-index">02</div><h3>AI Game Collection</h3><p>A browser-based collection of games, including an AI-based Tic Tac Toe game using JavaScript and jQuery.</p><a class="project-link" href="https://chetan500001.github.io/Ai_games/" target="_blank" rel="noopener noreferrer">Play / explore ↗</a></article>
+        <article class="project"><div class="project-index">03</div><h3>Hostel Trade Hub</h3><p>A campus marketplace concept for students to buy, sell or donate items. The listed release uses Flutter and PostgreSQL/Supabase.</p><a class="project-link" href="https://github.com/Chetan500001/Hostel_trade_hub/releases/tag/first_version" target="_blank" rel="noopener noreferrer">View release ↗</a></article>
+      </div>
     </div>
+  </section>
 
-    <div>
-
-        <h2>
-            My day-to-day work at Telenity.
-        </h2>
-
-        <p>
-            I started at Telenity as an intern in January 2026
-            and moved into a permanent QAD Engineer role in July.
-        </p>
-
+  <section class="content" id="education">
+    <div class="wrap">
+      <div class="section-top"><div class="section-label">04 / Education</div><div><h2>Education</h2><p class="section-intro">A computer applications background, with a strong academic record.</p></div></div>
+      <div class="education"><div class="year">2024 — 2026</div><div><h3>Master of Computer Applications (MCA)</h3><p>Thapar Institute of Engineering & Technology · CGPA 9.07</p></div></div>
+      <div class="education"><div class="year">2021 — 2024</div><div><h3>Bachelor of Computer Applications (BCA)</h3><p>Chitkara University</p></div></div>
     </div>
+  </section>
 
-</div>
-
-
-<div class="experience reveal">
-
-
-<div>
-
-    <div class="company">
-        Telenity
+  <section class="content" id="certificates">
+    <div class="wrap">
+      <div class="section-top"><div class="section-label">05 / Learning</div><div><h2>Courses and simulations</h2><p class="section-intro">Additional learning completed alongside my degree and projects.</p></div></div>
+      <div class="cert-grid">
+        <article class="cert"><div class="cert-top">Cloud</div><h3>AWS Cloud Foundation</h3><p>Compute, storage, networking and cloud fundamentals.</p></article>
+        <article class="cert"><div class="cert-top">DevOps concepts</div><h3>AWS Microservices & CI/CD</h3><p>Learning around microservices and CI/CD pipeline concepts.</p></article>
+        <article class="cert"><div class="cert-top">Job simulation</div><h3>Deloitte Technology</h3><p>A technology job simulation focused on analysis and client tasks.</p></article>
+      </div>
     </div>
+  </section>
 
-    <h3>
-        QAD Engineer
-    </h3>
-
-    <div class="period">
-        Permanent employee · 15 Jul 2026
+  <section class="contact-section" id="contact">
+    <div class="wrap contact-box">
+      <div><p class="eyebrow" style="color:#3b78a4;margin-top:0">06 / Contact</p><h2>Have a QA or engineering role in mind?</h2><p>I’d be glad to discuss how my experience with testing, service validation and production support could fit your team.</p></div>
+      <div class="contact-actions"><a class="btn" href="mailto:chetan_0001@zohomail.com">Email me ↗</a><a class="btn secondary" href="https://github.com/Chetan500001" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn secondary" href="Chetan_resume.pdf">Résumé ↗</a></div>
     </div>
-
-
-    <div class="timer">
-
-        <div class="timer-label">
-            Time at Telenity
-        </div>
-
-
-        <div class="timer-grid">
-
-            <div class="timer-item">
-                <strong id="years">0</strong>
-                <span>Years</span>
-            </div>
-
-            <div class="timer-item">
-                <strong id="months">0</strong>
-                <span>Months</span>
-            </div>
-
-            <div class="timer-item">
-                <strong id="days">0</strong>
-                <span>Days</span>
-            </div>
-
-        </div>
-
-
-        <div class="journey">
-
-            <div>
-                <b>
-                    15 Jan 2026
-                </b>
-
-                <span>
-                    Internship started
-                </span>
-            </div>
-
-
-            <div>
-                <b>
-                    15 Jul 2026
-                </b>
-
-                <span>
-                    Permanent role
-                </span>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div>
-
-    <p class="exp-copy">
-
-        My work is mainly about testing and preparing VAS services
-        for release, then checking that everything continues to work
-        properly after deployment.
-
-    </p>
-
-
-    <ul class="exp-list">
-
-        <li>
-            Test APIs and service flows before release.
-        </li>
-
-        <li>
-            Work on service definitions and configuration during service setup.
-        </li>
-
-        <li>
-            Support deployments and check changes after they go live.
-        </li>
-
-        <li>
-            Use SecureCRT logs to trace issues and understand what is happening in a service flow.
-        </li>
-
-        <li>
-            Use TeamViewer when remote access or troubleshooting is needed.
-        </li>
-
-        <li>
-            Work on VAS campaigns and service releases that have successfully gone live.
-        </li>
-
-    </ul>
-
-
-    <div class="work-tags">
-
-        <span class="tag">
-            Postman
-        </span>
-
-        <span class="tag">
-            SecureCRT
-        </span>
-
-        <span class="tag">
-            TeamViewer
-        </span>
-
-        <span class="tag">
-            API Testing
-        </span>
-
-        <span class="tag">
-            Log Analysis
-        </span>
-
-        <span class="tag">
-            Deployment
-        </span>
-
-        <span class="tag">
-            Service Configuration
-        </span>
-
-        <span class="tag">
-            VAS
-        </span>
-
-    </div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     SKILLS
-=========================== -->
-
-<section id="skills">
-
-<div class="container">
-
-
-<div class="section-head reveal">
-
-    <div class="section-number">
-        02 · SKILLS
-    </div>
-
-    <div>
-
-        <h2>
-            Work skills and personal skills, kept separate.
-        </h2>
-
-        <p>
-            The first group is part of my day-to-day work at Telenity.
-            The second group covers skills I have developed through
-            personal projects and practice.
-        </p>
-
-    </div>
-
-</div>
-
-
-<div class="skills-layout">
-
-
-<!-- PROFESSIONAL -->
-
-<div class="skill-board professional reveal">
-
-
-<div class="board-head">
-
-    <div>
-
-        <small>
-            Used at Telenity
-        </small>
-
-        <h3>
-            Professional skills
-        </h3>
-
-    </div>
-
-
-    <div class="board-icon">
-
-        <i class="fa-solid fa-briefcase"></i>
-
-    </div>
-
-</div>
-
-
-<div class="skill-group">
-
-    <h4>
-        Testing & validation
-    </h4>
-
-    <div class="pills">
-
-        <span class="pill">
-            <i class="fa-solid fa-flask"></i>
-            Postman
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-code"></i>
-            API Testing
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-check"></i>
-            Functional Validation
-        </span>
-
-    </div>
-
-</div>
-
-
-<div class="skill-group">
-
-    <h4>
-        Service & release
-    </h4>
-
-    <div class="pills">
-
-        <span class="pill">
-            <i class="fa-solid fa-sliders"></i>
-            Service Definition
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-gears"></i>
-            Configuration
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-rocket"></i>
-            Deployment
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-tower-broadcast"></i>
-            VAS Services
-        </span>
-
-    </div>
-
-</div>
-
-
-<div class="skill-group">
-
-    <h4>
-        Production support
-    </h4>
-
-    <div class="pills">
-
-        <span class="pill">
-            <i class="fa-solid fa-terminal"></i>
-            SecureCRT
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-file-lines"></i>
-            Log Analysis
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-desktop"></i>
-            TeamViewer
-        </span>
-
-        <span class="pill">
-            <i class="fa-solid fa-wrench"></i>
-            Troubleshooting
-        </span>
-
-    </div>
-
-</div>
-
-
-</div>
-
-
-<!-- PERSONAL -->
-
-<div class="skill-board reveal">
-
-
-<div class="board-head">
-
-    <div>
-
-        <small>
-            Outside work
-        </small>
-
-        <h3>
-            Skills I learned on my own
-        </h3>
-
-    </div>
-
-
-    <div class="board-icon">
-
-        <i class="fa-solid fa-code"></i>
-
-    </div>
-
-</div>
-
-
-<div class="ind-note">
-
-    These are skills I have developed through
-    personal projects, practice and experimenting
-    with different technologies.
-
-</div>
-
-
-<div class="personal-groups">
-
-
-<div class="personal-group">
-
-    <h4>
-        Development
-    </h4>
-
-    <div class="pills">
-
-        <span class="pill">Flutter</span>
-        <span class="pill">JavaScript</span>
-        <span class="pill">HTML</span>
-        <span class="pill">CSS</span>
-        <span class="pill">PostgreSQL</span>
-        <span class="pill">Firebase</span>
-        <span class="pill">Git</span>
-        <span class="pill">SQL</span>
-        <span class="pill">Bash</span>
-
-    </div>
-
-</div>
-
-
-<div class="personal-group">
-
-    <h4>
-        Design
-    </h4>
-
-    <div class="pills">
-
-        <span class="pill">Canva</span>
-        <span class="pill">UI/UX</span>
-        <span class="pill">Graphic Design</span>
-
-    </div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     PROJECTS
-=========================== -->
-
-<section id="projects">
-
-<div class="container">
-
-
-<div class="section-head reveal">
-
-    <div class="section-number">
-        03 · PROJECTS
-    </div>
-
-    <div>
-
-        <h2>
-            Things I have built outside work.
-        </h2>
-
-        <p>
-            These are the projects where I get to spend more time
-            building and experimenting with software.
-        </p>
-
-    </div>
-
-</div>
-
-
-<div class="card-grid">
-
-
-<a
-    class="card reveal"
-    href="https://github.com/Chetan500001/temporary_billing_system/tree/main"
-    target="_blank"
-    rel="noopener">
-
-    <div class="card-icon">
-        <i class="fa-solid fa-file-invoice-dollar"></i>
-    </div>
-
-    <h3>
-        Temporary Billing System
-    </h3>
-
-    <p>
-        A billing project with invoicing,
-        payment tracking and reporting.
-    </p>
-
-    <div class="card-tags">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>PHP</span>
-    </div>
-
-</a>
-
-
-<a
-    class="card reveal"
-    href="https://chetan500001.github.io/Ai_games/"
-    target="_blank"
-    rel="noopener">
-
-    <div class="card-icon">
-        <i class="fa-solid fa-robot"></i>
-    </div>
-
-    <h3>
-        AI Game Collection
-    </h3>
-
-    <p>
-        A small collection of browser games,
-        including an AI-based Tic Tac Toe game.
-    </p>
-
-    <div class="card-tags">
-        <span>JavaScript</span>
-        <span>AI</span>
-        <span>jQuery</span>
-    </div>
-
-</a>
-
-
-<a
-    class="card reveal"
-    href="https://github.com/Chetan500001/Hostel_trade_hub/releases/tag/first_version"
-    target="_blank"
-    rel="noopener">
-
-    <div class="card-icon">
-        <i class="fa-solid fa-right-left"></i>
-    </div>
-
-    <h3>
-        Hostel Trade Hub
-    </h3>
-
-    <p>
-        A student marketplace app for buying,
-        selling and donating items within a campus community.
-    </p>
-
-    <div class="card-tags">
-        <span>Flutter</span>
-        <span>PostgreSQL</span>
-        <span>Supabase</span>
-    </div>
-
-</a>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     EDUCATION
-=========================== -->
-
-<section id="education">
-
-<div class="container">
-
-
-<div class="section-head reveal">
-
-    <div class="section-number">
-        04 · EDUCATION
-    </div>
-
-    <div>
-
-        <h2>
-            Education.
-        </h2>
-
-        <p>
-            My academic background in computer applications,
-            from BCA to MCA.
-        </p>
-
-    </div>
-
-</div>
-
-
-<div class="education-grid">
-
-
-<article class="education-card reveal">
-
-    <div class="education-top">
-
-        <span class="education-year">
-            2021 — 2024
-        </span>
-
-        <span class="education-mark">
-            BCA
-        </span>
-
-    </div>
-
-
-    <div class="education-icon">
-        <i class="fa-solid fa-graduation-cap"></i>
-    </div>
-
-
-    <h3>
-        Bachelor of Computer Applications
-    </h3>
-
-    <p>
-        Chitkara University
-    </p>
-
-</article>
-
-
-<article class="education-card reveal">
-
-    <div class="education-top">
-
-        <span class="education-year">
-            2024 — 2026
-        </span>
-
-        <span class="education-mark">
-            MCA
-        </span>
-
-    </div>
-
-
-    <div class="education-icon">
-        <i class="fa-solid fa-school"></i>
-    </div>
-
-
-    <h3>
-        Master of Computer Applications
-    </h3>
-
-    <p>
-        Thapar Institute of Engineering & Technology · Completed 2026
-    </p>
-
-</article>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     CERTIFICATES
-=========================== -->
-
-<section id="certificates">
-
-<div class="container">
-
-
-<div class="section-head reveal">
-
-    <div class="section-number">
-        05 · CERTIFICATES
-    </div>
-
-    <div>
-
-        <h2>
-            Courses and certifications.
-        </h2>
-
-        <p>
-            A few of the courses and simulations
-            I completed alongside my work and projects.
-        </p>
-
-    </div>
-
-</div>
-
-
-<div class="card-grid">
-
-
-<article class="card reveal">
-
-    <div class="card-icon">
-        <i class="fa-brands fa-aws"></i>
-    </div>
-
-    <h3>
-        AWS Cloud Foundation
-    </h3>
-
-    <p>
-        Cloud fundamentals covering compute,
-        storage and networking.
-    </p>
-
-</article>
-
-
-<article class="card reveal">
-
-    <div class="card-icon">
-        <i class="fa-brands fa-aws"></i>
-    </div>
-
-    <h3>
-        AWS Microservices & CI/CD
-    </h3>
-
-    <p>
-        Training around microservices
-        and CI/CD pipeline concepts.
-    </p>
-
-</article>
-
-
-<article class="card reveal">
-
-    <div class="card-icon">
-        <i class="fa-solid fa-award"></i>
-    </div>
-
-    <h3>
-        Deloitte Technology Job Simulation
-    </h3>
-
-    <p>
-        Technology simulation focused
-        on analysis and client tasks.
-    </p>
-
-</article>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ===========================
-     CONTACT
-=========================== -->
-
-<section id="contact">
-
-<div class="container">
-
-<div class="contact reveal">
-
-<div>
-
-    <div class="kicker">
-        06 · CONTACT
-    </div>
-
-
-    <h2>
-        Interested in a QA or engineering opportunity?
-    </h2>
-
-
-    <p>
-
-        I'm open to hearing from teams where my testing,
-        API, service support and production experience
-        could be useful.
-
-    </p>
-
-</div>
-
-
-<div class="contact-actions">
-
-    <a
-        class="btn"
-        href="mailto:chetan_0001@zohomail.com">
-
-        <i class="fa-solid fa-envelope"></i>
-
-        Email
-
-    </a>
-
-
-    <a
-        class="btn"
-        href="https://github.com/Chetan500001"
-        target="_blank"
-        rel="noopener">
-
-        <i class="fa-brands fa-github"></i>
-
-        GitHub
-
-    </a>
-
-
-    <a
-        class="btn"
-        href="Chetan_resume.pdf">
-
-        <i class="fa-regular fa-file-lines"></i>
-
-        Resume
-
-    </a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+  </section>
 </main>
-
-
-<footer>
-
-    <div class="container">
-
-        © <span id="year"></span>
-        Chetan · QAD Engineer
-
-    </div>
-
-</footer>
-
-
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> Chetan</span><span>QAD Engineer · Telenity</span></div></footer>
 <script>
+const menuBtn=document.getElementById('menuBtn');
+const navRight=document.getElementById('navRight');
+menuBtn.addEventListener('click',()=>{const open=navRight.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
+navRight.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navRight.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));
+document.getElementById('year').textContent=new Date().getFullYear();
 
-/* ===========================
-   WELCOME
-=========================== */
+const welcomeScreen = document.getElementById('welcomeScreen');
+const welcomeWord = document.getElementById('welcomeWord');
+const welcomeCaret = document.getElementById('welcomeCaret');
+const welcomeSub = document.getElementById('welcomeSub');
+const welcomeRole = document.getElementById('welcomeRole');
+const welcomeStartedAt = Date.now();
+let welcomeClosed = false;
+let typewriterCancelled = false;
 
-const welcome =
-    document.getElementById("welcome");
-
-setTimeout(()=>{
-
-    welcome.classList.add("hide");
-
-    setTimeout(()=>{
-        welcome.remove();
-    },800);
-
-},5000);
-
-
-/* ===========================
-   THEME
-=========================== */
-
-const root =
-    document.documentElement;
-
-const themeToggle =
-    document.getElementById("themeToggle");
-
-
-function setTheme(theme){
-
-    root.setAttribute(
-        "data-theme",
-        theme
-    );
-
-    localStorage.setItem(
-        "chetan-theme",
-        theme
-    );
-
-    const dark =
-        theme === "dark";
-
-    themeToggle.innerHTML =
-        dark
-        ? '<i class="fa-solid fa-sun"></i>'
-        : '<i class="fa-solid fa-moon"></i>';
-
-    themeToggle.setAttribute(
-        "aria-label",
-        dark
-        ? "Switch to light mode"
-        : "Switch to dark mode"
-    );
-
+function closeWelcome() {
+  if (welcomeClosed) return;
+  welcomeClosed = true;
+  typewriterCancelled = true;
+  welcomeScreen.classList.add('is-leaving');
+  document.body.classList.remove('welcome-active');
+  window.setTimeout(() => welcomeScreen.remove(), 760);
 }
 
-
-const savedTheme =
-    localStorage.getItem("chetan-theme");
-
-setTheme(
-    savedTheme === "dark"
-    ? "dark"
-    : "light"
-);
-
-
-themeToggle.addEventListener(
-    "click",
-    ()=>{
-
-        const current =
-            root.getAttribute(
-                "data-theme"
-            );
-
-        setTheme(
-            current === "dark"
-            ? "light"
-            : "dark"
-        );
-
-    }
-);
-
-
-/* ===========================
-   MOBILE MENU
-=========================== */
-
-const nav =
-    document.getElementById("nav");
-
-const menu =
-    document.getElementById("menu");
-
-
-menu.addEventListener(
-    "click",
-    ()=>{
-        nav.classList.toggle(
-            "mobile-open"
-        );
-    }
-);
-
-
-document
-.querySelectorAll(".navlinks a")
-.forEach(link=>{
-
-    link.addEventListener(
-        "click",
-        ()=>{
-            nav.classList.remove(
-                "mobile-open"
-            );
-        }
-    );
-
-});
-
-
-/* ===========================
-   ACTIVE NAV
-=========================== */
-
-const sections =
-    [
-        ...document.querySelectorAll(
-            "main section[id]"
-        )
-    ];
-
-const links =
-    [
-        ...document.querySelectorAll(
-            ".navlinks a"
-        )
-    ];
-
-
-const activeObserver =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(!entry.isIntersecting)
-                        return;
-
-                    links.forEach(link=>{
-
-                        link.classList.toggle(
-                            "active",
-                            link.getAttribute(
-                                "href"
-                            ) ===
-                            "#" +
-                            entry.target.id
-                        );
-
-                    });
-
-                }
-            );
-
-        },
-        {
-            rootMargin:
-                "-35% 0px -55% 0px"
-        }
-    );
-
-
-sections.forEach(
-    section =>
-    activeObserver.observe(section)
-);
-
-
-/* ===========================
-   REVEAL
-=========================== */
-
-const revealObserver =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(!entry.isIntersecting)
-                        return;
-
-                    entry.target.classList.add(
-                        "show"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-            );
-
-        },
-        {
-            threshold:.08
-        }
-    );
-
-
-document
-.querySelectorAll(".reveal")
-.forEach(
-    el =>
-    revealObserver.observe(el)
-);
-
-
-/* ===========================
-   BACKGROUND TONES
-=========================== */
-
-const toneMap = {
-
-    home:"tone1",
-
-    experience:"tone2",
-
-    skills:"tone3",
-
-    projects:"tone4",
-
-    education:"tone1",
-
-    certificates:"tone2",
-
-    contact:"tone3"
-
+const wait = (ms) => new Promise(resolve => window.setTimeout(resolve, ms));
+const graphemes = (text) => {
+  if (window.Intl && Intl.Segmenter) {
+    return Array.from(new Intl.Segmenter('hi', { granularity: 'grapheme' }).segment(text), item => item.segment);
+  }
+  return Array.from(text);
 };
 
-
-const toneObserver =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(!entry.isIntersecting)
-                        return;
-
-                    document.body.classList.remove(
-                        "tone1",
-                        "tone2",
-                        "tone3",
-                        "tone4"
-                    );
-
-                    document.body.classList.add(
-                        toneMap[
-                            entry.target.id
-                        ] || "tone1"
-                    );
-
-                }
-            );
-
-        },
-        {
-            rootMargin:
-                "-30% 0px -55% 0px"
-        }
-    );
-
-
-sections.forEach(
-    section =>
-    toneObserver.observe(section)
-);
-
-
-/* ===========================
-   SCROLL
-=========================== */
-
-const progress =
-    document.getElementById(
-        "progress"
-    );
-
-const header =
-    document.getElementById(
-        "siteHeader"
-    );
-
-
-function updateScroll(){
-
-    const doc =
-        document.documentElement;
-
-    const range =
-        doc.scrollHeight -
-        doc.clientHeight;
-
-    const percent =
-        range > 0
-        ? (
-            doc.scrollTop /
-            range
-        ) * 100
-        : 0;
-
-    progress.style.width =
-        percent + "%";
-
-    header.classList.toggle(
-        "scrolled",
-        window.scrollY > 15
-    );
-
+async function typeText(text, speed = 145) {
+  const chars = graphemes(text);
+  welcomeWord.textContent = '';
+  for (const char of chars) {
+    if (typewriterCancelled) return;
+    welcomeWord.textContent += char;
+    await wait(speed);
+  }
 }
 
-
-window.addEventListener(
-    "scroll",
-    updateScroll,
-    {
-        passive:true
-    }
-);
-
-updateScroll();
-
-
-/* ===========================
-   CAREER TIMER
-=========================== */
-
-function updateCareer(){
-
-    const start =
-        new Date(
-            2026,
-            0,
-            15
-        );
-
-    const now =
-        new Date();
-
-
-    let years =
-        now.getFullYear()
-        -
-        start.getFullYear();
-
-
-    let anchor =
-        new Date(start);
-
-    anchor.setFullYear(
-        start.getFullYear()
-        +
-        years
-    );
-
-
-    if(anchor > now){
-
-        years--;
-
-        anchor =
-            new Date(start);
-
-        anchor.setFullYear(
-            start.getFullYear()
-            +
-            years
-        );
-
-    }
-
-
-    let months =
-        (
-            now.getFullYear()
-            -
-            anchor.getFullYear()
-        )
-        *
-        12
-        +
-        (
-            now.getMonth()
-            -
-            anchor.getMonth()
-        );
-
-
-    let monthAnchor =
-        new Date(anchor);
-
-    monthAnchor.setMonth(
-        anchor.getMonth()
-        +
-        months
-    );
-
-
-    if(monthAnchor > now){
-
-        months--;
-
-        monthAnchor =
-            new Date(anchor);
-
-        monthAnchor.setMonth(
-            anchor.getMonth()
-            +
-            months
-        );
-
-    }
-
-
-    const days =
-        Math.floor(
-            (
-                now -
-                monthAnchor
-            )
-            /
-            86400000
-        );
-
-
-    document.getElementById(
-        "years"
-    ).textContent =
-        years;
-
-
-    document.getElementById(
-        "months"
-    ).textContent =
-        months;
-
-
-    document.getElementById(
-        "days"
-    ).textContent =
-        days;
-
+async function runWelcome() {
+  await wait(180);
+  await typeText('नमस्ते', 170);
+  if (typewriterCancelled) return;
+  await wait(380);
+  const hindi = graphemes(welcomeWord.textContent);
+  for (let i = hindi.length - 1; i >= 0; i--) {
+    if (typewriterCancelled) return;
+    welcomeWord.textContent = hindi.slice(0, i).join('');
+    await wait(72);
+  }
+  if (typewriterCancelled) return;
+  await wait(100);
+  await typeText('Hello', 125);
+  if (typewriterCancelled) return;
+  await wait(850);
+  if (!typewriterCancelled) closeWelcome();
 }
 
+const welcomeAutoClose = window.setTimeout(closeWelcome, 5000);
+runWelcome();
 
-updateCareer();
-
-setInterval(
-    updateCareer,
-    60000
-);
-
-
-/* ===========================
-   YEAR
-=========================== */
-
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
-
+function skipWelcome() {
+  if (Date.now() - welcomeStartedAt >= 2000) {
+    window.clearTimeout(welcomeAutoClose);
+    closeWelcome();
+  }
+}
+welcomeScreen.addEventListener('click', skipWelcome);
+welcomeScreen.addEventListener('touchend', skipWelcome, { passive: true });
+welcomeScreen.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    skipWelcome();
+  }
+});
 </script>
-
 </body>
 </html>
